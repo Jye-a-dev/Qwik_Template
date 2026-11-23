@@ -1,5 +1,5 @@
 {
-  "name": "my-e2e-library",
+  "name": "qwik_template",
   "engines": {
     "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
   },
@@ -11,30 +11,55 @@
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.types": "tsc --incremental --noEmit",
-    "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
+    "type-check": "tsc --noEmit",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "format": "prettier --write .",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
-    "lint": "eslint \"src/**/*.ts*\"",
+    "lint": "eslint .",
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open --mode ssr",
-    "qwik": "qwik"
+    "qwik": "qwik",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
     "@builder.io/qwik": "^1.20.4",
     "@builder.io/qwik-city": "^1.20.4",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@eslint/js": "^9",
     "@types/node": "20.19.0",
     "eslint": "9.32.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-qwik": "^1.20.4",
     "globals": "16.4.0",
-    "prettier": "3.6.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.10.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "5.4.5",
     "typescript-eslint": "8.38.0",
     "typescript-plugin-css-modules": "latest",
     "undici": "*",
     "vite": "7.3.7",
     "vite-tsconfig-paths": "^4.2.1"
+  },
+  "dependencies": {
+    "@qwikest/icons": "^0.0.13",
+    "@tailwindcss/vite": "^4.3.5",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.1",
+    "tailwindcss": "^4.3.5",
+    "zod": "^4.6.7"
   }
 }
